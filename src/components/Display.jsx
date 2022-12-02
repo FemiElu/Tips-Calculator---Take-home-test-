@@ -1,30 +1,42 @@
-import React from 'react'
+import React from "react";
 
-const Display = () => {
+const Display = ({ calculatedTip, total, people, handleResetBtn }) => {
+
+   
+
+   const returnCurrencyAmt = (amt) => {
+    return   new Intl.NumberFormat('en-US', 
+        { style: 'currency', currency: 'USD' }).
+        format(amt); 
+   }
+
   return (
     <>
-    <div className="display">
+      <div className="display">
         <div className="display-group">
-        <div className='display-row'>
-          <div className='display-label'>
-            <p className='header'>Tip Amount</p>
-            <p className='unit'> / Person</p>
-          </div>
-            <p className='display-amt'>$0.00</p>
+          <div className="display-row">
+            <div className="display-label">
+              <p className="header">Tip Amount</p>
+              <p className="unit"> / Person</p>
             </div>
+            <p className="display-amt">{returnCurrencyAmt(`${calculatedTip ? calculatedTip/people: 0}`)}</p>
+          </div>
 
-          <div className='display-row'>
-          <div className='display-label'>
-            <p className='header'>Tip Amount</p>
-            <p className='unit'> /Person</p>
+          <div className="display-row">
+            <div className="display-label">
+              <p className="header">Total</p>
+              <p className="unit"> /Person</p>
+            </div>
+            <p className="display-amt">{returnCurrencyAmt(`${total? total/people:0}`)}</p>
           </div>
-            <p className='display-amt'>$0.00</p>
-          </div>
-          </div>
-      <button className='btn' disabled>Reset</button>
+        </div>
+        {
+            total? (<button className="btn" onClick=
+            {handleResetBtn}>Reset</button>):(<button className="btn" disabled>Reset</button> )
+        }
       </div>
-      </>
-  )
-}
+    </>
+  );
+};
 
-export default Display
+export default Display;
