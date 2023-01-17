@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'; 
+import styled from 'styled-components';
 
 // import components
 import Display from './components/Display'; 
 import Form from './components/Form';
-
+import StyledButton, { FancyButton } from './components/Button/Button'
 //import images
 import logo from './assets/images/logo.svg'; 
 
@@ -29,33 +30,48 @@ const handleResetBtn= (e) =>{
     setTip(""); 
     setPeople(""); 
     setCalculatedTip(0); 
-    setTotal(0); 
+    setTotal(0)
 }
 
-  return (
-    <div className="wrapper">
-      <img src={logo} alt="Splitter logo"/>
-    <div className='container'>
-      <Form 
-      bill={bill}
-      setBill={setBill}
-      people={people}
-      setPeople={setPeople}
-      tip={tip}
-      setTip={setTip}
+  // return (
+  //   <div className="wrapper">
+  //     <img src={logo} alt="Splitter logo"/>
+  //   <div className='container'>
+  //     <Form 
+  //     bill={bill}
+  //     setBill={setBill}
+  //     people={people}
+  //     setPeople={setPeople}
+  //     tip={tip}
+  //     setTip={setTip}
        
-      />
-      <Display 
-      total ={total}
-      people = {people}
-      calculatedTip ={calculatedTip}
-      handleResetBtn={handleResetBtn}
+  //     />
+  //     <Display 
+  //     total ={total}
+  //     people = {people}
+  //     calculatedTip ={calculatedTip}
+  //     handleResetBtn={handleResetBtn}
 
-      />
+  //     />
     
-    </div>
+  //   </div>
+  //   </div>
+  // )
+  
+
+  return (
+    <div className='App'>
+      {/* <button>Button</button> */}
+      <StyledButton>Styled Button</StyledButton>
+      <br/>
+      <StyledButton variant= 'outline'>Styled Button</StyledButton>
+      <br/>
+      <FancyButton as ='a'>Fancy Button</FancyButton>
     </div>
   )
 }
+
+
+
 
 export default App
